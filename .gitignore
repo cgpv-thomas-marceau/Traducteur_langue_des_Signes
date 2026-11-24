@@ -1,0 +1,22 @@
+# Dépendances (très lourd, se réinstalle avec "npm install")
+node_modules/
+
+# Fichiers de build générés automatiquement
+dist/
+build/
+
+# Variables d'environnement et secrets éventuels
+.env
+.env.local
+.env.*.local
+
+# Fichiers système et éditeurs
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+
+# Logs d'erreurs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

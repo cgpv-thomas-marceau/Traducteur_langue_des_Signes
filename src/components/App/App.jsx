@@ -1,3 +1,4 @@
+//fait par gemini
 import { useState, useRef } from 'react';
 import WebcamView from '../WebcamView';
 import SignPredictor from '../SignPredictor';

@@ -2,7 +2,7 @@ import { HandLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
 
 let handLandmarker = null;
 
-// Initialise l'instance de MediaPipe Hand Landmarker
+//Initialise l'instance de MediaPipe Hand Landmarker
 export async function createHandLandmarker() {
   if (handLandmarker) return handLandmarker;
 
@@ -13,8 +13,10 @@ export async function createHandLandmarker() {
   handLandmarker = await HandLandmarker.createFromOptions(vision, {
     baseOptions: {
       modelAssetPath: '/models/hand_landmarker.task',
-      delegate: 'GPU' // Utilise l'accélération graphique locale
+      //Utilise l'acceleration graphique locale
+      delegate: 'GPU' 
     },
+    //Utilise seulment la video et pas le son
     runningMode: 'VIDEO',
     numHands: 1
   });
@@ -22,7 +24,7 @@ export async function createHandLandmarker() {
   return handLandmarker;
 }
 
-// Fonction pour dessiner les points et connexions de la main sur le canvas
+//Dessine le point et les connexion de la main dans le canvas
 export function drawHandLandmarks(ctx, landmarks) {
   if (!landmarks || landmarks.length === 0) return;
 
@@ -38,7 +40,7 @@ export function drawHandLandmarks(ctx, landmarks) {
   const width = ctx.canvas.width;
   const height = ctx.canvas.height;
 
-  // 1. Tracer les lignes d'articulation
+  //Trace les lignes d'articulation
   ctx.strokeStyle = '#38bdf8';
   ctx.lineWidth = 3;
 
@@ -52,7 +54,7 @@ export function drawHandLandmarks(ctx, landmarks) {
     ctx.stroke();
   });
 
-  // 2. Dessiner les points des repères (landmarks)
+  //Dessine les points de reperes (landmarks)
   landmarks.forEach((pt) => {
     ctx.beginPath();
     ctx.arc(pt.x * width, pt.y * height, 5, 0, 2 * Math.PI);
